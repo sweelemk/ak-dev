@@ -1,8 +1,42 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import localFont from "next/font/local";
 import "./globals.css";
 
-const inter = Inter({ subsets: ["latin"] });
+const openSauseSans = localFont({
+  src: [
+    {
+      path: "../assets/fonts/OpenSauceSans-Light.ttf",
+      weight: "300",
+      style: "normal",
+    },
+    {
+      path: "../assets/fonts/OpenSauceSans-Regular.ttf",
+      weight: "400",
+      style: "normal",
+    },
+    {
+      path: "../assets/fonts/OpenSauceSans-Medium.ttf",
+      weight: "500",
+      style: "normal",
+    },
+    {
+      path: "../assets/fonts/OpenSauceSans-Bold.ttf",
+      weight: "700",
+      style: "normal",
+    },
+  ],
+});
+
+const Bebas = localFont({
+  src: [
+    {
+      path: "../assets/fonts/BebasNeue-Regular.ttf",
+      weight: "300",
+      style: "normal",
+    },
+  ],
+  variable: "--font-bebas",
+});
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -16,7 +50,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={`${openSauseSans.className} ${Bebas.variable} dark`}>
+        {children}
+      </body>
     </html>
   );
 }
